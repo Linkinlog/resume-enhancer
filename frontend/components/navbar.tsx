@@ -17,6 +17,7 @@ export default function Navbar() {
                 width={400}
                 height={400}
                 className="h-14 w-auto"
+                priority
               />
             </Link>
           </div>
@@ -25,10 +26,7 @@ export default function Navbar() {
             <Link href="/pricing" className="text-background hover:text-background">
               Pricing
             </Link>
-            <Link href="/signup" className="text-background hover:text-background">
-              Sign Up
-            </Link>
-            <Link href="/signin" className="text-background hover:text-background">
+            <Link href="/auth" className="text-background hover:text-background">
               Sign In
             </Link>
           </div>
