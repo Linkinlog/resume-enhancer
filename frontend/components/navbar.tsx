@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,42 +36,37 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-background hover:text-background focus:outline-none"
+              className="p-2 rounded-lg bg-white bg-opacity-10 text-background hover:bg-opacity-20 transition-all"
               aria-controls="mobile-menu"
-              aria-expanded="false"
+              aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
-              <svg
-                className="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
       </div>
 
-      <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`} id="mobile-menu">
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+      <div 
+        className={`md:hidden transition-all duration-300 ${isOpen ? 'block' : 'hidden'}`} 
+        id="mobile-menu"
+      >
+        <div className="p-4 space-y-2">
           <Link
             href="/pricing"
-            className="block text-lg text-background hover:text-background"
+            className="block text-center py-3 rounded-lg text-background bg-white bg-opacity-10 hover:bg-opacity-20 transition-all"
+            onClick={() => setIsOpen(false)}
           >
             Pricing
           </Link>
           <Link
             href="/auth"
-            className="block text-lg text-background hover:text-background"
+            className="block text-center py-3 rounded-lg text-background bg-white bg-opacity-10 hover:bg-opacity-20 transition-all"
+            onClick={() => setIsOpen(false)}
           >
             Sign In
           </Link>
@@ -78,4 +74,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-};
+}
