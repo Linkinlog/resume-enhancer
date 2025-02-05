@@ -143,7 +143,7 @@ export default function AuthPage() {
             <div className="mt-6 text-center">
               {authMode === 'login' && (
                 <p className="text-sm text-foreground">
-                  Don't have an account?{' '}
+                  Don&apos;t have an account?{' '}
                   <button
                     onClick={() => setAuthMode('signup')}
                     className="text-primary hover:text-primary"
