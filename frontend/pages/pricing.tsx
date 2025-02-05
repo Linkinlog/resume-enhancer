@@ -24,7 +24,7 @@ const PricingPage: React.FC = () => {
       billingCycle: 'month',
       features: [
         'Basic Resume Optimization',
-        'Single Job Description Matching',
+        'AI Job Description Matching',
         'Community Support'
       ],
       cta: 'Get Started'
@@ -35,6 +35,7 @@ const PricingPage: React.FC = () => {
       credits: 10,
       billingCycle: 'month',
       features: [
+        'Everything in Free Starter',
         'Advanced Resume Optimization',
         'Multiple Job Matches',
         'Priority Support',
@@ -49,11 +50,9 @@ const PricingPage: React.FC = () => {
       billingCycle: 'month',
       isMostPopular: true,
       features: [
+        'All Pro Monthly Features',
         'Premium Resume Polishing',
         'Unlimited Job Descriptions',
-        'Personal AI Coach',
-        'Expedited Support',
-        'Advanced Analytics'
       ],
       cta: 'Unlock Potential'
     },
@@ -65,8 +64,7 @@ const PricingPage: React.FC = () => {
       features: [
         'Everything in Pro Monthly',
         'Significant Credit Savings',
-        'Annual Performance Review',
-        'Exclusive Webinars'
+        'Exclusive Content'
       ],
       cta: 'Save Annually'
     },
@@ -91,7 +89,6 @@ const PricingPage: React.FC = () => {
       features: [
         'Comprehensive Career Support',
         'Unlimited Credit Usage',
-        'White Glove Service',
         'Priority Feature Requests'
       ],
       cta: 'Total Access'
