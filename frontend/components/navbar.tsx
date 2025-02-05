@@ -61,22 +61,16 @@ export default function Navbar() {
       </div>
 
       <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`} id="mobile-menu">
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
           <Link
             href="/pricing"
-            className="block text-background hover:text-background"
+            className="block text-lg text-background hover:text-background"
           >
             Pricing
           </Link>
           <Link
-            href="/signup"
-            className="block text-background hover:text-background"
-          >
-            Sign Up
-          </Link>
-          <Link
-            href="/signin"
-            className="block text-background hover:text-background"
+            href="/auth"
+            className="block text-lg text-background hover:text-background"
           >
             Sign In
           </Link>
