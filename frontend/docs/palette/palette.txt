@@ -1,0 +1,27 @@
+** Chosen ** monochromatic
+#bdb4f9, #000000
+#9b8bf4, #000000
+#5928ed, #ffffff
+#461dd3, #ffffff
+#3313b9, #ffffff
+
+vibrant
+#0074e6, #ffffff
+#2547f0, #ffffff
+#5928ed, #ffffff
+#b12ade, #ffffff
+#e6308a, #000000
+
+contrasting 1
+#5ba300, #000000
+#89ce00, #000000
+#9b8bf4, #000000
+#5928ed, #ffffff
+#3313b9, #ffffff
+
+contrasting 2
+#029355, #000000
+#00bf7c, #000000
+#5928ed, #ffffff
+#f57500, #000000
+#c44501, #ffffff
