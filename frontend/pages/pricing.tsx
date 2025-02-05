@@ -38,8 +38,6 @@ const PricingPage: React.FC = () => {
         'Everything in Free Starter',
         'Advanced Resume Optimization',
         'Multiple Job Matches',
-        'Priority Support',
-        'Credit Rollover'
       ],
       cta: 'Go Pro'
     },
@@ -53,6 +51,8 @@ const PricingPage: React.FC = () => {
         'All Pro Monthly Features',
         'Premium Resume Polishing',
         'Unlimited Job Descriptions',
+        'Priority Support',
+        'Credit Rollover'
       ],
       cta: 'Unlock Potential'
     },
