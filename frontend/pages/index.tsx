@@ -4,6 +4,7 @@ import { Loader2 } from 'lucide-react';
 import Layout from '@/components/layout';
 import { FormData } from '@/components/types/types';
 import TextInput from '@/components/text_input';
+import Toast from '@/components/toast';
 
 export default function Home() {
   const [resumeData, setResumeData] = useState<FormData>({
@@ -15,15 +16,36 @@ export default function Home() {
     text: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      console.log(resumeData);
-      console.log(jobDescriptionData);
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const res = await fetch('/api/llama', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          resume: resumeData,
+          jobDescription: jobDescriptionData,
+        }),
+      });
+
+      if (!res.ok) {
+        const error = await res.text();
+        throw new Error(error || 'Failed to analyze resume');
+      }
+
+      const data = await res.text();
+      console.log(data);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'An unexpected error occurred';
+      setShowToast(true);
+      setToastMessage(message);
     } finally {
       setIsSubmitting(false);
     }
@@ -125,6 +147,11 @@ export default function Home() {
           </motion.div>
         </form>
       </motion.div>
+      <Toast
+        message={toastMessage}
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
     </Layout>
   );
 }

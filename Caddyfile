@@ -1,0 +1,10 @@
+{
+	auto_https off
+}
+
+http://enhance.test {
+	reverse_proxy /api/* backend:8000
+	file_server {
+		root /srv
+	}
+}

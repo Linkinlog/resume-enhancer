@@ -13,7 +13,7 @@ export default function AuthPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Authentication logic will go here
+    // TODO - Auth
     console.log(authMode, { email, password, name });
   };
 
