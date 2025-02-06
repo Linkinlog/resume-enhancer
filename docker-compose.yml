@@ -29,7 +29,7 @@ services:
     networks:
       - resume-network
     entrypoint: /bin/bash
-    command: -c  "ollama serve & sleep 2 && ollama run llama3.2:1b-instruct-q3_K_S && wait"
+    command: -c  "ollama serve & sleep 2 && ollama run llama3.2:1b && wait"
 networks:
   resume-network:
     driver: bridge

@@ -5,7 +5,7 @@ const SEOHead = () => {
     <Head>
       <title>resume-enhancer</title>
       <meta name="description" content="AI-powered resume enhancement tool that helps align your resume with job descriptions and creates custom cover letters for premium members" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
       <link rel="icon" href="https://enhance.dahlton.org/my_logo.svg" />
 
