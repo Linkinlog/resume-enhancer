@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: caddy.Dockerfile
     ports:
-      - "80:80"
+      - "1223:80"
     networks:
       - resume-network
     depends_on:
@@ -14,16 +14,12 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
     networks:
       - resume-network
     depends_on:
       - llama
   llama:
     image: ollama/ollama
-    ports:
-      - "11434:11434"
     volumes:
       - ollama:/root/.ollama
       - ./Modelfile:/root/.ollama/Modelfile
