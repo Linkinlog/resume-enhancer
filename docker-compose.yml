@@ -26,10 +26,15 @@ services:
       - "11434:11434"
     volumes:
       - ollama:/root/.ollama
+      - ./Modelfile:/root/.ollama/Modelfile
     networks:
       - resume-network
     entrypoint: /bin/bash
-    command: -c  "ollama serve & sleep 2 && ollama run llama3.2:1b && wait"
+    command: -c  "ollama serve & \
+                  sleep 2 && \
+                  ollama create resume -f /root/.ollama/Modelfile && \
+                  ollama run resume && \
+                  wait"
 networks:
   resume-network:
     driver: bridge

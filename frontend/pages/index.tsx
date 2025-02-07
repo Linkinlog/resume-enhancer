@@ -15,6 +15,8 @@ export default function Home() {
     file: null,
     text: '',
   });
+
+  const [response, setResponse] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
@@ -22,6 +24,7 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setResponse('');
 
     try {
       const res = await fetch('/api/llama', {
@@ -40,8 +43,31 @@ export default function Home() {
         throw new Error(error || 'Failed to analyze resume');
       }
 
-      const data = await res.text();
-      console.log(data);
+      const reader = res.body?.getReader();
+      const decoder = new TextDecoder();
+
+      if (reader) {
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value);
+          const lines = chunk.split('\n');
+
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const content = line.slice(6); // Remove 'data: ' prefix
+              if (content.trim() == "") {
+                console.log('Empty content');
+                setResponse(prev => prev + "\n");
+                continue;
+              }
+              console.log('content:', content);
+              setResponse(prev => prev + content);
+            }
+          }
+        }
+      }
     } catch (error) {
       const message = error instanceof Error ? error.message : 'An unexpected error occurred';
       setShowToast(true);
@@ -144,6 +170,21 @@ export default function Home() {
                 </span>
               )}
             </button>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="mt-8"
+          >
+            <textarea
+              value={response}
+              readOnly
+              placeholder="Analysis results will appear here..."
+              className="w-full h-52 p-4 rounded-xl bg-background text-white border border-primary
+                        focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50
+                        placeholder-gray-500 resize-none"
+            />
           </motion.div>
         </form>
       </motion.div>
